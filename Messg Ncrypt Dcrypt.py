@@ -15,25 +15,26 @@ def user_direc(dco_nco):
             sh_indx = indx + shift_no
 
             if sh_indx > len(letters):
-                sh_indx =-len(letters)
-
+                sh_indx -=len(letters)
+                print(sh_indx)
 
             empty_list.append(letters[sh_indx])
             enco_messg = empty_list
 
         print(f"Here's your Encoded msgg: {''.join(enco_messg)}.")
+        enco_messg.clear()
 
     if dco_nco == 'd':
         deco_messg = []
         for i in messg:
             indx= letters.index(i)
             re_sh_indx = indx - shift_no
-            if re_sh_indx > len(letters):
-                re_sh_indx =-len(letters)
+
 
             deco_messg += letters[re_sh_indx]   #edit with decoded string
 
         print(f"Here's your Decoded msgg: {''.join(deco_messg)}.")
+        deco_messg.clear()
 #        sys.exit(0)   #if no further acess to func.
     
 #Nco_Dco Func in action:
