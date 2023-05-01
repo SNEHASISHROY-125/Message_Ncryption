@@ -1,7 +1,8 @@
 import random
 import sys
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+#Mixed List of list & symbols
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?',' ']
 user_choice = input("Type 'n' to 'encrypt' ,Type 'd' to 'decrypt' :\n")
 messg = input('Type Your Messege:\n')
 shift_no = int(input('Shift No:\n'))
@@ -12,6 +13,11 @@ def user_direc(dco_nco):
         for i in messg:
             indx= letters.index(i)
             sh_indx = indx + shift_no
+
+            if sh_indx > len(letters):
+                sh_indx =-len(letters)
+
+
             empty_list.append(letters[sh_indx])
             enco_messg = empty_list
 
@@ -22,10 +28,13 @@ def user_direc(dco_nco):
         for i in messg:
             indx= letters.index(i)
             re_sh_indx = indx - shift_no
+            if re_sh_indx > len(letters):
+                re_sh_indx =-len(letters)
+
             deco_messg += letters[re_sh_indx]   #edit with decoded string
 
         print(f"Here's your Decoded msgg: {''.join(deco_messg)}.")
-#        sys.exit(0)
+#        sys.exit(0)   #if no further acess to func.
     
 #Nco_Dco Func in action:
 user_direc(user_choice)        
